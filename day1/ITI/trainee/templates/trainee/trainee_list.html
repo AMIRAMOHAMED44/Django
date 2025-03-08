@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h2>list trainees</h2>
+<a href="{% url 'add_trainee' %}">add trainee</a>
+<ul>
+    {% for trainee in trainees %}
+        <li>{{ trainee.name }} - {{ trainee.course }}
+            <a href="{% url 'update_trainee' trainee.id %}">update</a>
+            <a href="{% url 'delete_trainee' trainee.id %}">delete</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>
