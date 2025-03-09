@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+{% extends 'base.html' %}
+{% block content %}
+
    <h2>list trainees</h2>
 <a href="{% url 'add_trainee' %}">add trainee</a>
 <ul>
@@ -16,6 +19,7 @@
     {% endfor %}
 </ul>
 
+{% endblock %}
 
 </body>
 </html>

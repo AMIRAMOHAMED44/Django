@@ -5,12 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+{% extends 'base.html' %}
+{% block content %}
 <h2> {{ trainee.name }}Are you sure you want to delete?</h2>
 <form method="post">
     {% csrf_token %}
     <button type="submit">yes, delete</button>
 </form>
 <a href="{% url 'trainee_list' %}">back</a>
+{% endblock %}
 
 </body>
 </html>
