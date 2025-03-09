@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Courses</h2>
+<a href="{% url 'add_course' %}">Add Course</a>
+<ul>
+    {% for course in courses %}
+    <li>
+        {{ course.name }} - <a href="{% url 'update_course' course.pk %}">Edit</a>
+        <form action="{% url 'delete_course' course.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+</body>
+</html>
