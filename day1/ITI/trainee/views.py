@@ -17,7 +17,7 @@ def add_trainee(request):
             return redirect('trainee_list')
     else:
         form = TraineeForm()
-    return render(request, 'trainee/trainee_form.html', {'form': form})
+    return render(request, 'trainee/trainee_add.html', {'form': form})
 
 def update_trainee(request, trainee_id):
     trainee = get_object_or_404(Trainee, id=trainee_id)
@@ -28,11 +28,11 @@ def update_trainee(request, trainee_id):
             return redirect('trainee_list')
     else:
         form = TraineeForm(instance=trainee)
-    return render(request, 'trainee/trainee_form.html', {'form': form})
+    return render(request, 'trainee/trainee_add.html', {'form': form})
 
 def delete_trainee(request, trainee_id):
     trainee = get_object_or_404(Trainee, id=trainee_id)
     if request.method == 'POST':
         trainee.delete()
         return redirect('trainee_list')
-    return render(request, 'trainee/trainee_confirm_delete.html', {'trainee': trainee})
+    return render(request, 'trainee/trainee_delete.html', {'trainee': trainee})
