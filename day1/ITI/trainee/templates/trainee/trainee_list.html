@@ -3,21 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        tr,td{
+        padding:20px;
+        font-size:30px
+        }
+    </style>
 </head>
 <body>
 {% extends 'base.html' %}
 {% block content %}
+<h1>List Trainees</h1>
+<table border="1" width="100%" style="text-align:center; ">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Profile Image</th>
+        <th>Course</th>
+        <th>Joined Date</th>
+        <th>Action</th>
+        {%for trainee in  trainees%}
+            <tr>
+                    <td>{{trainee.id}} {{trainee.isactive}}</td>
+                    <td>{{trainee.name}}</td>
+                    <td>{{trainee.email}}</td>
+                    <td>{{trainee.age}}</td>
 
-   <h2>list trainees</h2>
-<a href="{% url 'add_trainee' %}">add trainee</a>
-<ul>
-    {% for trainee in trainees %}
-        <li>{{ trainee.name }} - {{ trainee.course }}
-            <a href="{% url 'update_trainee' trainee.id %}">update</a>
-            <a href="{% url 'delete_trainee' trainee.id %}">delete</a>
-        </li>
-    {% endfor %}
-</ul>
+                    <td>
+                         <img width="300" height="150" src="{{trainee.image.url}}" alt="{{trainee.image}}"/>
+                    </td>
+                   <td>{{trainee.course}}</td>
+                    <td>{{trainee.joined_date}}</td>
+                    <td>
+                        <a href="{%url 'update_trainee' trainee.id%}">Update</a>
+                        <a href="{%url 'delete_trainee' trainee.id%}">Delete</a>
+
+                    </td>
+            </tr>
+        {%endfor%}
+    </tr>
+</table>
+
+<!--   <h2>list trainees</h2>-->
+<!--<a href="{% url 'add_trainee' %}">add trainee</a>-->
+<!--<ul>-->
+<!--    {% for trainee in trainees %}-->
+<!--        <li>{{ trainee.name }} - {{ trainee.course }}-->
+<!--            <a href="{% url 'update_trainee' trainee.id %}">update</a>-->
+<!--            <a href="{% url 'delete_trainee' trainee.id %}">delete</a>-->
+<!--        </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
 
 {% endblock %}
 

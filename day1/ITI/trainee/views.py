@@ -22,16 +22,24 @@ def add_trainee(request):
 
     return render(request, 'trainee/trainee_add.html')
 
-def update_trainee(request, trainee_id):
-    trainee = get_object_or_404(Trainee, id=trainee_id)
-    if request.method == 'POST':
-        form = TraineeForm(request.POST, instance=trainee)
-        if form.is_valid():
-            form.save()
-            return redirect('trainee_list')
-    else:
-        form = TraineeForm(instance=trainee)
-    return render(request, 'trainee/trainee_add.html', {'form': form})
+
+
+
+def update_trainee(request,id):
+    context = {'oldobj':
+                   Trainee.objects.get(id=id)}
+    if (request.method == 'POST'):
+        Trainee.objects.filter(id=id).update(
+            name=request.POST['trname'],
+            email=request.POST['tremail'],
+            age=request.POST['trage'],
+            image=request.FILES['trimg'],
+            course=request.POST['trcourse'],
+            joined_date=request.POST['trdate']
+        )
+        return  redirect('trainee_list')
+
+    return render(request, 'trainee/update.html',context)
 
 def delete_trainee(request, trainee_id):
     trainee = get_object_or_404(Trainee, id=trainee_id)

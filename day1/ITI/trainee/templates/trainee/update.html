@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html'%}
+{%block tit%}
+Trainee - Update
+{%endblock%}
+{%block content%}
+<h1>Update Trainees</h1>
+<form method="post" enctype="multipart/form-data" >
+    {%csrf_token%}
+    <label>Name:</label>
+    <input type="text" required name="trname" value="{{oldobj.name}}">
+    </br>
+    <label>Email:</label>
+    <input type="text" required name="tremail" value="{{oldobj.email}}">
+  </br>
+    <label>Age:</label>
+    <input type="number" required name="trage" value="{{oldobj.age}}">
+    </br>
+    <label>Profile image:</label>
+    <input type="file" required name="trimg" value="{{oldobj.image}}">
+       </br>
+    <label>Course:</label>
+    <input type="text" required name="trcourse" value="{{oldobj.course}}">
+    <br>
+    <label>Joined_date:</label>
+    <input type="date" required name="trdate" value="{{oldobj.joined_date}}">
+    </br>
+    <input type="submit" value="Update">
+</form>
+{%endblock%}
