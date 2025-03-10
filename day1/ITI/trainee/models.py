@@ -8,7 +8,7 @@ class Trainee(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     age = models.PositiveIntegerField()
-    image = models.ImageField(upload_to='trainee/imgs')
+    image= models.ImageField(upload_to='trainee/imgs')
     course = models.CharField(max_length=100)
     joined_date = models.DateField(auto_now_add=True)
 
