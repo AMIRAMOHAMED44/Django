@@ -6,7 +6,7 @@ from .models import Trainee
 from .forms import TraineeForm
 
 def trainee_list(request):
-    trainees = Trainee.objects.all()
+    trainees = Trainee.objects.filter(isactive=True)
     return render(request, 'trainee/trainee_list.html', {'trainees': trainees})
 
 def add_trainee(request):
@@ -20,6 +20,7 @@ def add_trainee(request):
         obj=Trainee(name=trname,email=tremail,age=trage,image=trimg,course=trcourse,joined_date=trdate)
         obj.save()
 
+        return redirect('trainee_list')
     return render(request, 'trainee/trainee_add.html')
 
 
@@ -41,9 +42,6 @@ def update_trainee(request,id):
 
     return render(request, 'trainee/update.html',context)
 
-def delete_trainee(request, trainee_id):
-    trainee = get_object_or_404(Trainee, id=trainee_id)
-    if request.method == 'POST':
-        trainee.delete()
-        return redirect('trainee_list')
-    return render(request, 'trainee/trainee_delete.html', {'trainee': trainee})
+def delete_trainee(request, id):
+    Trainee.objects.filter(id=id).update(isactive=False)
+    return redirect('trainee_list')

@@ -11,5 +11,6 @@ class Trainee(models.Model):
     image= models.ImageField(upload_to='trainee/imgs')
     course = models.CharField(max_length=100)
     joined_date = models.DateField(auto_now_add=True)
+    isactive=models.BooleanField(default=True)
 
 

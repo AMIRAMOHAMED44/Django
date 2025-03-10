@@ -23,10 +23,11 @@
         <th>Profile Image</th>
         <th>Course</th>
         <th>Joined Date</th>
+        <th>Is Active</th>
         <th>Action</th>
         {%for trainee in  trainees%}
             <tr>
-                    <td>{{trainee.id}} {{trainee.isactive}}</td>
+                    <td>{{trainee.id}}</td>
                     <td>{{trainee.name}}</td>
                     <td>{{trainee.email}}</td>
                     <td>{{trainee.age}}</td>
@@ -36,6 +37,8 @@
                     </td>
                    <td>{{trainee.course}}</td>
                     <td>{{trainee.joined_date}}</td>
+                    <td>{{trainee.isactive}}</td>
+
                     <td>
                         <a href="{%url 'update_trainee' trainee.id%}">Update</a>
                         <a href="{%url 'delete_trainee' trainee.id%}">Delete</a>
@@ -45,17 +48,11 @@
         {%endfor%}
     </tr>
 </table>
+<br><br>
+<a href="{%url 'add_trainee' %}">Add</a>
 
-<!--   <h2>list trainees</h2>-->
-<!--<a href="{% url 'add_trainee' %}">add trainee</a>-->
-<!--<ul>-->
-<!--    {% for trainee in trainees %}-->
-<!--        <li>{{ trainee.name }} - {{ trainee.course }}-->
-<!--            <a href="{% url 'update_trainee' trainee.id %}">update</a>-->
-<!--            <a href="{% url 'delete_trainee' trainee.id %}">delete</a>-->
-<!--        </li>-->
-<!--    {% endfor %}-->
-<!--</ul>-->
+
+
 
 {% endblock %}
 

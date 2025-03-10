@@ -3,23 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        tr,td{
+        padding:20px;
+        font-size:30px
+        }
+    </style>
 </head>
 <body>
 {% extends 'base.html' %}
 {% block content %}
-<h2>Courses</h2>
-<a href="{% url 'add_course' %}">Add Course</a>
-<ul>
-    {% for course in courses %}
-    <li>
-        {{ course.name }} - <a href="{% url 'update_course' course.pk %}">Edit</a>
-        <form action="{% url 'delete_course' course.pk %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
+<h1>List Courses</h1>
+<table border="1" width="100%" style="text-align:center; ">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date </th>
+
+        {%for course in  courses%}
+            <tr>
+                    <td>{{course.id}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.start_date}}</td>
+                    <td>{{course.end_date}}</td>
+
+                    <td>
+                        <a href="{%url 'update_course' course.id%}">Update</a>
+                        <a href="{%url 'delete_course' course.id%}">Delete</a>
+
+                    </td>
+            </tr>
+        {%endfor%}
+    </tr>
+</table>
+<br><br>
+<a href="{%url 'add_course' %}">Add</a>
+
+
+
+
 {% endblock %}
 
 </body>
