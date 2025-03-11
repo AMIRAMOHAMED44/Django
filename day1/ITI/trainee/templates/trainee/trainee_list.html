@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        tr,td{
-        padding:20px;
-        font-size:30px
-        }
-    </style>
-</head>
-<body>
+
 {% extends 'base.html' %}
 {% block content %}
 <h1>List Trainees</h1>
@@ -33,15 +21,15 @@
                     <td>{{trainee.age}}</td>
 
                     <td>
-                         <img width="300" height="150" src="{{trainee.image.url}}" alt="{{trainee.image}}"/>
+                         <img width="150" height="75" src="{{trainee.image.url}}" alt="{{trainee.image}}"/>
                     </td>
                    <td>{{trainee.course}}</td>
                     <td>{{trainee.joined_date}}</td>
                     <td>{{trainee.isactive}}</td>
 
                     <td>
-                        <a href="{%url 'update_trainee' trainee.id%}">Update</a>
-                        <a href="{%url 'delete_trainee' trainee.id%}">Delete</a>
+                        <a href="{%url 'update_trainee' trainee.id%}"id="link">Update</a>
+                        <a href="{%url 'delete_trainee' trainee.id%}" id="link">Delete</a>
 
                     </td>
             </tr>
@@ -49,12 +37,10 @@
     </tr>
 </table>
 <br><br>
-<a href="{%url 'add_trainee' %}">Add</a>
+<a href="{%url 'add_trainee' %}" id="link">Add</a>
 
 
 
 
 {% endblock %}
 
-</body>
-</html>

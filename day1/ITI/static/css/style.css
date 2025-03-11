@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color:teal;
+    padding: 30px;
+    margin-bottom: 50px;
+    }
+nav a{
+    color: white;
+    font-size: 40px;
+    margin-right: 20px;
+}
+nav a:hover{
+    color: rgb(236, 145, 236);
+}
+tr,td,th{
+        padding:20px;
+        font-size:30px
+        }
+h1{
+    color:rgb(232, 97, 232) ;
+       text-align: center;
+    margin-bottom: 30px;
+}
+h1:hover{
+    color: teal;
+}
+footer{
+    background-color:teal;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin-top:30px
+
+}
+#link{
+    color: white;
+    background-color:rgb(232, 97, 232) ;
+    padding: 7px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px;
+    margin:20px;
+    outline: none;
+    border: none;
+}
+#link:hover{
+    background-color: teal;
+}
+
+form{
+    border: 1px solid teal;
+    margin: 20px auto;
+    padding: 20px;
+    width:30%
+}
+input{
+    width: 95%;
+    margin-bottom:10px
+
+}
+label{
+    font-size: 20px;
+}
+table{
+    border-collapse: collapse;
+}

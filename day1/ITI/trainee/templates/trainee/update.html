@@ -17,15 +17,15 @@ Trainee - Update
     <label>Age:</label>
     <input type="number" required name="trage" value="{{oldobj.age}}">
     </br>
-    <label>Profile image:</label>
-    <input type="file" required name="trimg" value="{{oldobj.image}}">
-       </br>
     <label>Course:</label>
     <input type="text" required name="trcourse" value="{{oldobj.course}}">
     <br>
     <label>Joined_date:</label>
     <input type="date" required name="trdate" value="{{oldobj.joined_date}}">
     </br>
-    <input type="submit" value="Update">
+    <label>Profile image:</label>
+    <input type="file" required name="trimg" value="{{oldobj.image}}">
+    </br>
+    <input type="submit" value="Update" id="link">
 </form>
 {%endblock%}

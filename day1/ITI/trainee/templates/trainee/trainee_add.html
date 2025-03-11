@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>trainee_Add</title>
-</head>
-<body>
+
 {% extends 'base.html' %}
 {% block content %}
 <h1>New Trainees</h1>
@@ -18,9 +12,7 @@
      </br>
     <label>Age:</label>
     <input type="number" required name="trage">
-    </br>
-    <label>Profile image:</label>
-    <input type="file" required name="trimg">
+
      </br>
     <label>Course:</label>
     <input type="text" required name="trcourse">
@@ -28,12 +20,13 @@
     <label>Joined_date:</label>
     <input type="date" required name="trdate">
     </br>
-    <input type="submit" value="Add">
+    <label>Profile image:</label>
+    <input type="file" required name="trimg">
+    </br>
+    <input type="submit" value="Add" id="link">
 </form>
 
 
 
 {% endblock %}
 
-</body>
-</html>
