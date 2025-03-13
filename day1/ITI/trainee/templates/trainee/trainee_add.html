@@ -14,12 +14,19 @@
     <input type="number" required name="trage">
 
      </br>
-    <label>Course:</label>
-    <input type="text" required name="trcourse">
-    <br>
+<!--    <label>Course:</label>-->
+<!--    <input type="text" required >-->
+
     <label>Joined_date:</label>
     <input type="date" required name="trdate">
     </br>
+    <select name="trcourse">
+        <option>select course</option>
+        {%for course in courses%}
+           <option value="{{course.id}}">{{course.name}}</option>
+        {%endfor%}
+    </select>
+    <br>
     <label>Profile image:</label>
     <input type="file" required name="trimg">
     </br>

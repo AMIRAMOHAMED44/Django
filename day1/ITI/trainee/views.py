@@ -3,13 +3,15 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Trainee
-from .forms import TraineeForm
+from course.models import Course
 
 def trainee_list(request):
     trainees = Trainee.objects.filter(isactive=True)
     return render(request, 'trainee/trainee_list.html', {'trainees': trainees})
 
 def add_trainee(request):
+    context={}
+    context['courses']=Course.objects.all()
     if request.method == 'POST':
         trname = request.POST['trname']
         tremail=request.POST['tremail']
@@ -21,7 +23,7 @@ def add_trainee(request):
         obj.save()
 
         return redirect('trainee_list')
-    return render(request, 'trainee/trainee_add.html')
+    return render(request, 'trainee/trainee_add.html',context)
 
 
 
