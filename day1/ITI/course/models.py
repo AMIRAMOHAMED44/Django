@@ -10,4 +10,12 @@ class Course(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
 
+    @classmethod
+    def getallcourses(cls):
+        return cls.objects.all()
+    @classmethod
+    def getcoursebyid(cls,id):
+        return cls.objects.get(id=id)
+
+
 

@@ -6,6 +6,7 @@ Trainee - Update
 {%endblock%}
 {%block content%}
 <h1>Update Trainees</h1>
+<!--<img src="/media/{{oldobj.image}}">-->
 <form method="post" enctype="multipart/form-data" >
     {%csrf_token%}
     <label>Name:</label>
@@ -17,8 +18,16 @@ Trainee - Update
     <label>Age:</label>
     <input type="number" required name="trage" value="{{oldobj.age}}">
     </br>
-    <label>Course:</label>
-    <input type="text" required name="trcourse" value="{{oldobj.course}}">
+    <select name="trcourse">
+        <option>select course</option>
+        {%for course in courses%}
+        {%if course.id == oldobj.course.id%}
+           <option value="{{course.id}}" selected>{{course.name}}</option>
+        {%else%}
+           <option value="{{course.id}}">{{course.name}}</option>
+        {%endif%}
+        {%endfor%}
+    </select>
     <br>
     <label>Joined_date:</label>
     <input type="date" required name="trdate" value="{{oldobj.joined_date}}">

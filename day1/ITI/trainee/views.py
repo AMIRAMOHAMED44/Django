@@ -1,23 +1,21 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Trainee
 from course.models import Course
+# Create your views here.
+
 
 def trainee_list(request):
     trainees = Trainee.objects.filter(isactive=True)
     return render(request, 'trainee/trainee_list.html', {'trainees': trainees})
 
 def add_trainee(request):
-    context={}
-    context['courses']=Course.objects.all()
+    context={'courses':Course.getallcourses()}
     if request.method == 'POST':
         trname = request.POST['trname']
         tremail=request.POST['tremail']
         trage=request.POST['trage']
         trimg=request.FILES['trimg']
-        trcourse=request.POST['trcourse']
+        trcourse=Course.getcoursebyid(id=request.POST['trcourse'])
         trdate=request.POST['trdate']
         obj=Trainee(name=trname,email=tremail,age=trage,image=trimg,course=trcourse,joined_date=trdate)
         obj.save()
@@ -29,8 +27,8 @@ def add_trainee(request):
 
 
 def update_trainee(request,id):
-    context = {'oldobj':
-                   Trainee.objects.get(id=id)}
+    context = {'oldobj':Trainee.objects.get(id=id),
+               'courses':Course.getallcourses()}
     if (request.method == 'POST'):
         Trainee.objects.filter(id=id).update(
             name=request.POST['trname'],
