@@ -1,15 +1,15 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Course
 from .forms import CourseForm
+# Create your views here.
+
 
 def course_list(request):
     courses = Course.objects.all()
     return render(request, 'course/course_list.html', {'courses': courses})
 
 def add_course(request):
+    context={'form':CourseForm()}
     if request.method == 'POST':
         trname = request.POST['trname']
         trdescription = request.POST['trdescription']
@@ -19,7 +19,7 @@ def add_course(request):
         obj.save()
 
         return redirect('course_list')
-    return render(request, 'course/course_add.html')
+    return render(request, 'course/course_add.html',context)
 
 def update_course(request, id):
     context = {'oldobj':
