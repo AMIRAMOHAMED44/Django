@@ -2,8 +2,21 @@ from django.shortcuts import render, redirect
 from .models import Course
 from .forms import CourseForm
 from django.views import View
+from django.views.generic import *
+from django.urls import reverse_lazy
 
 # Create your views here.
+class UpdateCourse(UpdateView):
+        model = Course
+        fields = ['name', 'description', 'start_date', 'end_date']
+        template_name = 'course/update.html'
+        success_url = reverse_lazy('course_list')
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['oldobj'] = self.object
+            return context
+
 
 class ListCourse(View):
     def get(self,req):
