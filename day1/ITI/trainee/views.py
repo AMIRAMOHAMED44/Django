@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Trainee
 from course.models import Course
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-
+@login_required
 def trainee_list(request):
     trainees = Trainee.objects.filter(isactive=True)
     return render(request, 'trainee/trainee_list.html', {'trainees': trainees})
 
+@login_required
 def add_trainee(request):
     context={'courses':Course.getallcourses()}
     if request.method == 'POST':
@@ -26,7 +28,7 @@ def add_trainee(request):
 
 
 
-
+@login_required
 def update_trainee(request,id):
     context = {'oldobj':Trainee.objects.get(id=id),
                'courses':Course.getallcourses()}
@@ -43,6 +45,7 @@ def update_trainee(request,id):
 
     return render(request, 'trainee/update.html',context)
 
+@login_required
 def delete_trainee(request, id):
     Trainee.objects.filter(id=id).update(isactive=False)
     return redirect('trainee_list')
