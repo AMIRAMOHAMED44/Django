@@ -4,6 +4,7 @@ from course.models import Course
 # Create your views here.
 
 
+
 def trainee_list(request):
     trainees = Trainee.objects.filter(isactive=True)
     return render(request, 'trainee/trainee_list.html', {'trainees': trainees})
