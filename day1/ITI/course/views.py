@@ -6,6 +6,11 @@ from django.views.generic import *
 from django.urls import reverse_lazy
 
 # Create your views here.
+class DeleteCourse(DeleteView):
+    model = Course
+    success_url = reverse_lazy('course_list')
+
+
 class UpdateCourse(UpdateView):
         model = Course
         fields = ['name', 'description', 'start_date', 'end_date']
