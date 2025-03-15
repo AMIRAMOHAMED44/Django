@@ -5,8 +5,12 @@ from django.views import View
 
 # Create your views here.
 
-class ListCourses(View):
-    pass
+class ListCourse(View):
+    def get(self,req):
+        courses = Course.objects.all()
+        return render(req, 'course/course_list.html', {'courses': courses})
+
+
 
 class AddCourse(View):
     def get(self,req):
