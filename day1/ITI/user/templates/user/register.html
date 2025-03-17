@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
 </head>
-<body>
+    <style>
+        form{
+  background-color: teal;
+  padding: 70px;
+  border-radius: 0 40px;
+  box-shadow: 3px 3px 10px black;
+  text-align: center;
+  width: 30%;
+  margin: 5% auto;
+}
+input{
+  width: 90%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+label{
+font-size:25px
+}
+#submit{
+width:50%;
+  border-radius: 0 30px;
+ padding:15px 7px;
+ font-size:20px;
+ font-weight:bold;
+}
+#submit:hover{
+  background-color: #871e9f;
+  color:white
+}
 
+    </style>
+<body>
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="register" id="submit">
+    <p style="color:#871e9f;font-size:22px"><a href="{% url 'login' %}"  style="color:white;font-size:18px">Login</a> have acount?</p>
+
+</form>
+
+<div style="color:red">
+    {{error}}
+</div>
 </body>
 </html>
