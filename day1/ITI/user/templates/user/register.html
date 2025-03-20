@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block link %}
+         <a href="{% url 'login' %}">Login</a>
+{% endblock %}
+{% block content %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +11,14 @@
 </head>
     <style>
         form{
-  background-color: teal;
+  background-color: black;
+  color:white;
   padding: 70px;
   border-radius: 0 40px;
   box-shadow: 3px 3px 10px black;
   text-align: center;
   width: 30%;
-  margin: 5% auto;
+  margin: 3.3% auto;
 }
 input{
   width: 90%;
@@ -25,6 +31,7 @@ font-size:25px
 }
 #submit{
 width:50%;
+margin:20px;
   border-radius: 0 30px;
  padding:15px 7px;
  font-size:20px;
@@ -50,3 +57,4 @@ width:50%;
 </div>
 </body>
 </html>
+{% endblock %}

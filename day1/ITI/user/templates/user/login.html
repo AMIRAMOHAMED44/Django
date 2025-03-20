@@ -1,17 +1,23 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block link %}
+         <a href="{% url 'register' %}">Register</a>
+{% endblock %}
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <style>
+
         form{
-  background-color: teal;
-  padding: 70px;
+ background-color: black;
+  color:white;
+    padding: 70px;
   border-radius: 0 40px;
   box-shadow: 3px 3px 10px black;
   text-align: center;
   width: 30%;
-  margin: 7% auto;
+  margin: 9.3% auto;
 }
 input{
   width: 90%;
@@ -37,6 +43,7 @@ width:50%;
     </style>
 </head>
 <body>
+
 <form method="post">
     {%csrf_token%}
     {{form.as_p}}
@@ -50,3 +57,4 @@ width:50%;
 
 </body>
 </html>
+{% endblock %}
